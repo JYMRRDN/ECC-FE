@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <div>
+    <mat-form-field [hidden]="!ticketService.forAssignee">
+      <mat-select formControlName="assignee">
+        <mat-option *ngFor="let assignee of employees" [value]="assignee">{{assignee.firstName}} {{assignee.lastName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+<!--    <span>-->
+<!--      <mat-checkbox-->
+<!--                    [checked]="allSelected"-->
+<!--                    color="primary"-->
+<!--                    [indeterminate]="someSelected()"-->
+<!--                    (change)="setAll($event.checked)">-->
+<!--        {{task.name}}-->
+<!--      </mat-checkbox>-->
+<!--    </span>-->
+<!--      <span class="example-list-section">-->
+<!--      <ul>-->
+<!--        <li *ngFor="let subtask of task.subtasks">-->
+<!--          <mat-checkbox [(ngModel)]="subtask.completed"-->
+<!--                        [color]="subtask.color"-->
+<!--                        (ngModelChange)="updateAllComplete()">-->
+<!--            {{subtask.name}}-->
+<!--          </mat-checkbox>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </span>-->
+    <mat-selection-list #watchers formControlName="watchers" (selectionChange)="selectionChanged($event)"  [hidden]="ticketService.forAssignee">
+      <mat-list-option *ngFor="let watcher of employees" [value]="watcher.employeeNo">
+        {{watcher.firstName}} {{watcher.lastName}}
+      </mat-list-option>
+    </mat-selection-list>
+    <p>
+      Options selected: {{watchers.selectedOptions.selected}}
+    </p>
+  </div>
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button class="mat-raised-button" (click)="close()">Close</button>
+  <button mat-raised-button class="mat-raised-button mat-primary" (click)="ticketService.forAssignee ? assign() : addWatchers()">Save</button>
+</mat-dialog-actions>

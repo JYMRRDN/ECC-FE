@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span class="fw-light">{{title}}</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="primary" class="fw-normal mx-1" routerLink="/employees">
+    <mat-icon>account_box</mat-icon>
+    Employees
+  </button>
+  <button mat-raised-button color="primary" class="fw-normal mx-1" routerLink="/tickets">
+    <mat-icon>task</mat-icon>
+    Tickets
+  </button>
+</mat-toolbar>
+<router-outlet></router-outlet>

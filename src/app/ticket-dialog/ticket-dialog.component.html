@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        formControlName="title">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input
+        matInput
+        formControlName="description">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select formControlName="severity">
+        <mat-option *ngFor="let sv of severities" [value]="sv.name">{{sv.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field [hidden]="ticketService.isCreate">
+      <mat-select formControlName="status" [hidden]="ticketService.isCreate">
+        <mat-option *ngFor="let st of statuses" [value]="st.name">{{st.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button class="mat-raised-button" (click)="close()">Close</button>
+  <button mat-raised-button class="mat-raised-button mat-primary" (click)="ticketService.isCreate ? save(): update()">Save</button>
+</mat-dialog-actions>
