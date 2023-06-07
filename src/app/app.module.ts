@@ -22,6 +22,7 @@ import { TicketDialogComponent } from './ticket-dialog/ticket-dialog.component';
 import { AssignTicketDialogComponent } from './assign-ticket-dialog/assign-ticket-dialog.component';
 import {MatListModule} from "@angular/material/list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -31,26 +32,27 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     TicketDialogComponent,
     AssignTicketDialogComponent
   ],
-  imports: [
-    AlertModule.forRoot(),
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AlertModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    EmployeesComponent,
-    MatDialogModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    AppRoutingModule,
-    MatListModule,
-    MatCheckboxModule
-  ],
+    imports: [
+        AlertModule.forRoot(),
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AlertModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        EmployeesComponent,
+        MatDialogModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        AppRoutingModule,
+        MatListModule,
+        MatCheckboxModule,
+        MatTooltipModule
+    ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [EmployeeDialogComponent]

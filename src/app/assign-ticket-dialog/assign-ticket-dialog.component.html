@@ -2,7 +2,7 @@
 <mat-dialog-content [formGroup]="form">
   <div>
     <mat-form-field [hidden]="!ticketService.forAssignee">
-      <mat-select formControlName="assignee">
+      <mat-select formControlName="assignee" [compareWith]="compare">
         <mat-option *ngFor="let assignee of employees" [value]="assignee">{{assignee.firstName}} {{assignee.lastName}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -28,14 +28,14 @@
 <!--        </li>-->
 <!--      </ul>-->
 <!--    </span>-->
-    <mat-selection-list #watchers formControlName="watchers" (selectionChange)="selectionChanged($event)"  [hidden]="ticketService.forAssignee">
-      <mat-list-option *ngFor="let watcher of employees" [value]="watcher.employeeNo">
+    <mat-selection-list formControlName="watchers" (selectionChange)="selectionChanged($event)"  [hidden]="ticketService.forAssignee">
+      <mat-list-option *ngFor="let watcher of employees" [value]="watcher.employeeNo" [selected]="isSelected(watcher.employeeNo)">
         {{watcher.firstName}} {{watcher.lastName}}
       </mat-list-option>
     </mat-selection-list>
-    <p>
-      Options selected: {{watchers.selectedOptions.selected}}
-    </p>
+<!--    <p>-->
+<!--      Options selected: {{watchers.selectedOptions.selected}}-->
+<!--    </p>-->
   </div>
 
 

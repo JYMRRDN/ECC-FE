@@ -4,8 +4,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TicketService} from "../ticket.service";
 import {Employee} from "../employee";
 import {EmployeeService} from "../employee.service";
-import {MatListOption, MatSelectionListChange} from "@angular/material/list";
-import {SelectionModel} from "@angular/cdk/collections";
+import {MatSelectionListChange} from "@angular/material/list";
+import {Ticket} from "../ticket";
 
 @Component({
   selector: 'app-assign-ticket-dialog',
@@ -19,7 +19,7 @@ export class AssignTicketDialogComponent implements OnInit{
   watchers = {
     employeeNos: [0]
   }
-  ticketData: any
+  ticketData: Ticket
   selected: number[]
 
   constructor(
@@ -61,6 +61,14 @@ export class AssignTicketDialogComponent implements OnInit{
   selectionChanged(event: MatSelectionListChange): void {
     this.watchers.employeeNos = event.source.selectedOptions.selected.map(x => x.value)
     console.log(this.watchers)
+  }
+
+  isSelected(employeeNo: number){
+    return this.ticketData.watchers.some(x => x.employeeNo == employeeNo)
+  }
+
+  compare(a1: Employee, a2: Employee) {
+    return a1 && a2 ? a1.id === a2.id : a1 === a2;
   }
 
 }

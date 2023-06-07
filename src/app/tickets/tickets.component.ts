@@ -16,9 +16,9 @@ import {AssignTicketDialogComponent} from "../assign-ticket-dialog/assign-ticket
 })
 export class TicketsComponent implements OnInit{
 
-  title: 'Tickets';
+  title= 'Tickets'
   employees: Employee[] = []
-  tickets: Ticket[] = [];
+  tickets: Ticket[] = []
   newTicket: Ticket = {
     id: 0,
     title: '',
@@ -66,6 +66,7 @@ export class TicketsComponent implements OnInit{
         ticket: selectedTicket
       }
     })
+    this.ngOnInit()
   }
 
   displayWatchers(watchers: any[]) {
